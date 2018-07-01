@@ -77,7 +77,7 @@ Now, we won't be running more than 5 upload jobs at any given time, in addition 
 
 #### dynamic concurrency
 
-It might be interesting to implement a dynamic concurrency that can react to changes in bandwidth. For example, we might want to only `N` downloads at a given time based on network factors.
+It might be interesting to implement a dynamic concurrency that can react to changes in bandwidth. For example, we might want to run only `N` downloads at a given time based on network factors.
 
 #### capturing errors and data
 
