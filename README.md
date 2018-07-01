@@ -87,7 +87,7 @@ Should this be implemented? See caveats below.
 
 #### capturing errors and data
 
-There's no way to capture errors or results through the done callback. I wanted this queue to do as little work as possible. If you need to capture errors or results, do it at the scope you're writing your jobs in.
+There's no way to capture errors or results through the `done` callback. I wanted this queue to do as little work as possible. If you need to capture errors or results, do it at the scope you're writing your jobs in.
 
 #### `done` callback
 
