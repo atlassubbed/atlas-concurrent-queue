@@ -50,9 +50,7 @@ describe("ConcurrentQueue", function(){
     })
     for (let i = 0; i < numJobs; i++){
       queue.push(done => {
-        asyncCall(() => {
-          order.push(i), done();
-        })
+        order.push(i), asyncCall(done)
       })
     }
   })
