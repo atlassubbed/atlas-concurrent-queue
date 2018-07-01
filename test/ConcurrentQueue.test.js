@@ -4,9 +4,11 @@ const ConcurrentQueue = require("../src/ConcurrentQueue")
 const { asyncCall } = require("./helpers")
 
 describe("ConcurrentQueue", function(){
-  it("should throw error if not given a number of max parallel jobs to run", function(){
-    const makeQueue = () => new ConcurrentQueue();
-    expect(makeQueue).to.throw("non-zero concurrency required")
+  it("should throw error if not given a positive number of max parallel jobs to run", function(){
+    const invalidConcurrencies = [NaN, -12, 0, true, {}, new Date(), "", /reg/, () => {}, undefined, null]
+    invalidConcurrencies.forEach(concurrency => {
+      expect(() => new ConcurrentQueue(concurrency)).to.throw("concurrency of at least 1 required")
+    })
   })
   it("should only run a specified number of async jobs at any given time", function(testDone){
     const concurrency = 5, numJobs = 20

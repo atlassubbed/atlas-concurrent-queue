@@ -1,6 +1,9 @@
+const { isNontrivial } = require("./util")
+
 module.exports = class ConcurrentQueue {
   constructor(concurrency, allDone){
-    if (!concurrency) throw new Error("non-zero concurrency required");
+    if (!isNontrivial(concurrency)) 
+      throw new Error("concurrency of at least 1 required");
     let queue = [], active = 0, curJob;
     const next = () => {
       if (!active && !queue.length) return allDone && allDone();
