@@ -18,6 +18,7 @@ I was writing a totally legal file downloader and I needed to run the downloads 
 
 ## examples
 
+#### single queue
 
 Let's assume we have some file downloading API and we're trying to upload the downloaded files to our personal server. The queue's API is dead simple -- you instantiate a queue and then push jobs onto it:
 
@@ -44,7 +45,11 @@ for (let i = urls.length; i--;){
 }
 ```
 
-In the example above, we have 2000 download jobs, but no more than 10 are running at any given time. This helps keep us under the radar and prevents us from overloading our system. You might notice that we called `done()` *before* we started uploading the files to our server. This means that the uploading isn't actually limited in concurrency; we could easily have more than 10 uploads being attempted at once if our personal server is weak. This isn't good so, let's fix it by adding a second queue:
+In the example above, we have 2000 download jobs, but no more than 10 are running at any given time. This helps keep us under the radar and prevents us from overloading our system. You might notice that we called `done()` *before* we started uploading the files to our server. This means that the uploading isn't actually limited in concurrency; we could easily have more than 10 uploads being attempted at once if our personal server is weak. 
+
+#### multiple queues
+
+The example above can run into problems because we aren't pacing the upload jobs, so let's fix it by adding a second queue:
 
 ```javascript
 ...
