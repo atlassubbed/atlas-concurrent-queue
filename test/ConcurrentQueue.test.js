@@ -7,7 +7,7 @@ describe("ConcurrentQueue", function(){
   it("should throw error if not given a positive number of max parallel jobs to run", function(){
     const invalidConcurrencies = [NaN, -12, 0, true, {}, new Date(), "", /reg/, () => {}, undefined, null]
     invalidConcurrencies.forEach(concurrency => {
-      expect(() => new ConcurrentQueue(concurrency)).to.throw("concurrency of at least 1 required")
+      expect(() => new ConcurrentQueue(concurrency)).to.throw("concurrency must be at least 1")
     })
   })
   it("should only run a specified number of async jobs at any given time", function(testDone){
