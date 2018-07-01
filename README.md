@@ -45,7 +45,7 @@ for (let i = urls.length; i--;){
 }
 ```
 
-In the example above, we have 2000 download jobs, but no more than 10 are running at any given time. This helps keep us under the radar and prevents us from overloading our system. You might notice that we called `done()` *before* we started uploading the files to our server. This means that the uploading isn't actually limited in concurrency; we could easily have more than 10 uploads being attempted at once if our personal server is weak. 
+In the example above, we have 2000 download jobs, but no more than 10 are running at any given time. This helps keep us under the radar and prevents us from overloading our system. You might notice that we called `done()` *before* we started uploading the files to our server. This means that the uploading isn't actually limited in concurrency; we could easily have more than 10 uploads being attempted at once if our personal server is weak. This could be fixed by calling `done` in the `uploadFile` callback, but then we run into potential problems if the download server and upload server operate at different speeds.
 
 #### multiple queues
 
