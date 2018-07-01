@@ -73,6 +73,16 @@ for (let i = urls.length; i--;){
 
 Now, we won't be running more than 5 upload jobs at any given time, in addition to limiting the concurrency of the download jobs.
 
+## todo
+
+#### dynamic concurrency
+
+It might be interesting to implement a dynamic concurrency that can react to changes in bandwidth. For example, we might want to only `N` downloads at a given time based on network factors.
+
+#### capturing errors and data
+
+Should this be implemented? See caveats below.
+
 ## caveats
 
 #### capturing errors and data
